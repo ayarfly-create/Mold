@@ -1,4 +1,7 @@
 <template>
-  <div>測試系統1234</div>
+  <PMOrder />
 </template>
 
+<script setup>
+import PMOrder from './PMOrder.vue'
+</script>
