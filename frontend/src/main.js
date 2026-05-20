@@ -6,7 +6,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
 // 引入 Tailwind CSS 基礎樣式
-import './style.css'
+//import './style.css'
 
 // 引入所有 Element Plus 圖標
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
