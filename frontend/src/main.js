@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css' // 引入樣式
-import App from './app.vue'         // 確保路徑指向 App.vue
+import App from './App.vue'         // 確保路徑指向 App.vue
 
 const app = createApp(App)
 
