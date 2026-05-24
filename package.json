@@ -6,8 +6,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "publish": "npm run build && npm run deploy",
+    "deploy": "gh-pages -d dist",
+    "git-pull": "git pull origin main --rebase", 
+    "git-push": "git push origin main", 
+    "git-fopush": "git push origin main --force"
   },
   "dependencies": {
     "chart.js": "^4.5.1",
