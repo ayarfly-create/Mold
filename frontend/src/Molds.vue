@@ -55,4 +55,33 @@ const removeMold = (i) => {
   moldList.value.splice(i, 1); 
   localStorage.setItem('pm_molds', JSON.stringify(moldList.value)) 
 }
+// 重新統計所有模塊的累計沖次
+const rebuildModuleStats = () => {
+  const molds = JSON.parse(localStorage.getItem('pm_molds') || '[]');
+  const history = JSON.parse(localStorage.getItem('pm_history') || '[]');
+
+  // 遍歷所有模具
+  molds.forEach(mold => {
+    // 找出該模具在歷史紀錄中所有的工單
+    const moldHistory = history.filter(h => h.moldId === mold.id);
+    
+    // 初始化或重置該模具下的模塊統計
+    mold.modules = [];
+
+    // 針對該模具的所有歷史紀錄，重新歸類加總
+    moldHistory.forEach(h => {
+      let module = mold.modules.find(m => m.moduleNo === h.moduleNo);
+      if (!module) {
+        module = { moduleNo: h.moduleNo, shotCount: 0 };
+        mold.modules.push(module);
+      }
+      module.shotCount += Number(h.shotCount || 0);
+    });
+  });
+
+  // 存回 localStorage，確保主檔是最新的
+  localStorage.setItem('pm_molds', JSON.stringify(molds));
+  return molds;
+};
+
 </script>
